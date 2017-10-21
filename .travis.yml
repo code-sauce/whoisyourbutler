@@ -1,46 +1,42 @@
 matrix:
   include:
-
-    - language: node_js
-      node_js:
-        - "iojs"
-        - "7"
-      before-install:
-        - npm i -g npm to update
-      install:
-        - npm install -g jasmine
-        - npm install -g jasmine-node
-        - jasmine init
-        - jasmine examples
-      script:
-        jasmine
-
-    - language: python
-      python: "2.6"
-      install:
-        - pip install pytest
-      script: pytest
-
-    - language: python
-      python: "2.7"
-      install:
-        - pip install pytest
-      script: pytest
-
-    - language: python
-      python: "3.2"
-      install:
-        - pip install pytest
-      script: pytest
-
-    - language: python
-      python: "3.4"
-      install:
-        - pip install pytest
-      script: pytest
-
-    - language: python
-      python: "pypy"
-      install:
-        - pip install pytest
-      script: pytest
+  - language: node_js
+    node_js:
+    - iojs
+    - '7'
+    before-install:
+    - npm i -g npm to update
+    install:
+    - npm install -g jasmine
+    - npm install -g jasmine-node
+    - jasmine init
+    - jasmine examples
+    script: jasmine
+  - language: python
+    python: '2.6'
+    install:
+    - pip install pytest
+    script: pytest
+  - language: python
+    python: '2.7'
+    install:
+    - pip install pytest
+    script: pytest
+  - language: python
+    python: '3.2'
+    install:
+    - pip install pytest
+    script: pytest
+  - language: python
+    python: '3.4'
+    install:
+    - pip install pytest
+    script: pytest
+  - language: python
+    python: pypy
+    install:
+    - pip install pytest
+    script: pytest
+env:
+  global:
+    secure: oPT+EnnognLRPQXmE3RmZB3/Tf0Qj21HG5+oaybyTHtK3EGm686Xr+d2xzJazayywz2RRZxpmnO3Pt0i5eukvAwM8Tv9AWHj7H7yOSkyearC85f1a0UlGpeqtWtwPJIpLBF+gLVWbHRZsTgf7k1jzQ9eIJ1JNgckCp6FFnEDuyhf/BK5xhSN0WEWwLbWoVhswGDnc90gMVpa6auKs7EN+YHrfJQqY4YWG3b1VGWarmCx60lvG8RP6phsLYN6lXKkPGFe463dCPLpwv5l97Hej5i/gLVduyceli20RsPfSv6CtjvKcKGQZr8989aEvmfawGNjsP+SYmgoWR+qeK3YHqfQTAnjFj3Isdx6M9jgIgp8zle6PO6TFISCGJMAHYzU4k9rD5hXE2xGFcyQEX97b4gnI+9mQ7i07/rGFkCVBqlboy+z90v9KUm8IkjNXkoy62mnfOL5FguIT69upFWNPVIKY9GPSe2C/TaZsswuSBYkM11eqZG/4UbRL6ka3kiJfr1aY3nPi+2pjcxGCywtQpSHegzw7MlSlVfm3YbMkNN4AKVsKfL++egqkzENyB5HvD9qap8RLcsrrjkLQOCTrbeET7ZAJYBH0uu266iUAIhi3UPf6CpCgkw6s6gFnaa5nOvpAbP4lJl8+9z+llVm6YuMczqMNgVdAnVFhFWBcVU=
