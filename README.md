@@ -16,6 +16,7 @@ Evaluation criteria:
 * Support multiple versions of environment etc.
 * Deployment features like putting an artifact into S3 (on a private AWS account)
 * node tests, optionally a UI headless browser test
+* Docker support
 
 * Secrets management:
   Travis CI generates a public/private key pair and asks the user to encrypt using the public key using Travis CLI 
@@ -34,4 +35,9 @@ Evaluation criteria:
   ```secure: "VZRRcfBU9kISDPRUjT0yJdHHOM2Op3rwEt9FlnLXYHb9lucpxZlIj7ejhM36jjrVRQ6cHS/szydGcW0Y```
 
   that you can add to `.travis.yml` and the environment variable `SOMEVAR` will be available after being decrypted from the Travis Servers.
+
+  There are options to encrypt the secrets files: https://docs.travis-ci.com/user/encrypting-files/
+
+  
+
 

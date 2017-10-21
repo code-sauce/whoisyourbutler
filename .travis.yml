@@ -19,6 +19,8 @@ matrix:
     script: pytest
   - language: python
     python: '2.7'
+    env:
+        FOO=bar
     install:
     - pip install pytest
     script: pytest
