@@ -39,7 +39,7 @@ matrix:
     services:
         - docker
     before-install:
-        - docker pull ubuntu
+        - docker pull alpine
     install:
     - pip install pytest
     script: pytest
