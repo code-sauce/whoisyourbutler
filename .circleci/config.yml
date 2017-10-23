@@ -5,7 +5,7 @@
 version: 2
 jobs:
   test:
-    working_directory: ~/scalyr-agent-2
+    working_directory: ~/
     docker:
       - image: circleci/python:2.7-jessie-browsers
 
