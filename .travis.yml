@@ -57,7 +57,7 @@ before_install:
     - docker build -t sjain/scalyr-docker-agent .
     - docker ps -a
 install: pip install pytest
-script: docker run -d --name scalyr-docker-agent -v /tmp/api_key.json:/etc/scalyr-agent-2/agent.d/api_key.json -v /var/run/docker.sock:/var/scalyr/docker.sock -p 601:601 scalyr/scalyr-docker-agent
+script: pytest
 
 # via Travis CLI, the dockerhub username/password should have been set
 # travis env set DOCKER_USERNAME myusername
