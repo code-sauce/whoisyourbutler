@@ -15,6 +15,7 @@ Evaluation criteria:
 * Automated tests on Github commits
 * Support multiple versions of environment etc.
 * Deployment features like putting an artifact into S3 (on a private AWS account)
+  - https://docs.travis-ci.com/user/deployment
 * node tests, optionally a UI headless browser test
 * Docker support
 
