@@ -45,7 +45,7 @@ matrix:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME"
       -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler; 
       docker --version; 
-      pip install --user awscli; 
+      pip install awscli; 
       export PATH=$PATH:$HOME/.local/bin;  
       eval $(aws ecr get-login --region us-east-1); 
       docker build -t whoisyourbutler . ;
