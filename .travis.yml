@@ -43,14 +43,14 @@ matrix:
     script: pytest
     after_success:
     - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME"
-      -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler;
-    - docker --version
-    - pip install --user awscli
-    - export PATH=$PATH:$HOME/.local/bin
-    - eval $(aws ecr get-login --region us-east-1)
-    - docker build -t whoisyourbutler .
-    - docker tag whoisyourbutler:latest 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
-    - docker push 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
+      -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler; 
+      docker --version; 
+      pip install --user awscli; 
+      export PATH=$PATH:$HOME/.local/bin;  
+      eval $(aws ecr get-login --region us-east-1); 
+      docker build -t whoisyourbutler . ;
+      docker tag whoisyourbutler:latest 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest ;
+      docker push 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest ;
       fi
 env:
   global:

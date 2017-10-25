@@ -14,11 +14,12 @@ Evaluation criteria:
 
 * Automated tests on Github commits
 * Support multiple versions of environment etc.
-* Deployment features like putting an artifact into S3 (on a private AWS account)
+* Deployment Integrations
   - https://docs.travis-ci.com/user/deployment
+  - https://circleci.com/docs/2.0/deployment_integrations/
 * node tests, optionally a UI headless browser test
 * Docker support
-
+* 
 * Secrets management:
   Travis CI generates a public/private key pair and asks the user to encrypt using the public key using Travis CLI 
   and put the encrypted value in the config, which is used by travis to decrypt in the Travis backend.
