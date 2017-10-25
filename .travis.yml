@@ -44,14 +44,13 @@ matrix:
     after_success:
     - pip install awscli
     - export PATH=$PATH:$HOME/.local/bin
+    - aws ecr get-login --region us-east-1
     - eval $(aws ecr get-login --region us-east-1)
     - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME"
-      -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler; 
-      docker --version; 
-      docker build -t whoisyourbutler . ;
-      docker tag whoisyourbutler:latest 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest ;
-      docker push 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest ;
-      fi
+      -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler; docker --version;
+      docker build -t whoisyourbutler . ; docker tag whoisyourbutler:latest 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
+      ; docker push 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
+      ; fi
 env:
   global:
   - secure: oPT+EnnognLRPQXmE3RmZB3/Tf0Qj21HG5+oaybyTHtK3EGm686Xr+d2xzJazayywz2RRZxpmnO3Pt0i5eukvAwM8Tv9AWHj7H7yOSkyearC85f1a0UlGpeqtWtwPJIpLBF+gLVWbHRZsTgf7k1jzQ9eIJ1JNgckCp6FFnEDuyhf/BK5xhSN0WEWwLbWoVhswGDnc90gMVpa6auKs7EN+YHrfJQqY4YWG3b1VGWarmCx60lvG8RP6phsLYN6lXKkPGFe463dCPLpwv5l97Hej5i/gLVduyceli20RsPfSv6CtjvKcKGQZr8989aEvmfawGNjsP+SYmgoWR+qeK3YHqfQTAnjFj3Isdx6M9jgIgp8zle6PO6TFISCGJMAHYzU4k9rD5hXE2xGFcyQEX97b4gnI+9mQ7i07/rGFkCVBqlboy+z90v9KUm8IkjNXkoy62mnfOL5FguIT69upFWNPVIKY9GPSe2C/TaZsswuSBYkM11eqZG/4UbRL6ka3kiJfr1aY3nPi+2pjcxGCywtQpSHegzw7MlSlVfm3YbMkNN4AKVsKfL++egqkzENyB5HvD9qap8RLcsrrjkLQOCTrbeET7ZAJYBH0uu266iUAIhi3UPf6CpCgkw6s6gFnaa5nOvpAbP4lJl8+9z+llVm6YuMczqMNgVdAnVFhFWBcVU=
@@ -67,3 +66,6 @@ deploy:
   acl: public_read_write
   on:
     repo: code-sauce/whoisyourbutler
+notifications:
+  slack:
+    secure: mX6FMD2GjMuWoxxQSx5Ptu8R77z1WomKK6GMNLlsjLWxasF2Uc4YPT2GsgIAk9bNoWUihlKv6u1A2ho3HADzXR4hghBKJs3lrfhmPK8V10r5655VoeTLzlzDEn337fYaGEZiUc/bikDc0fK3qR/C1vcMZVog7y8fS2h80GXsBqTq+vVxVVYvyTvSiDB87wbzURAZc7tApobysPiEMZRgHxtaK7djliDHfyE6Ho9pMGsmGoaAYbwGsFQvnZh1ZEeacaI9Kx7wohrCTXHf4uK79qQxEd6TD7rR00Scvks1D4KcRxJUiQz5uuyhXeReHGk/4vpU3KUNpOgWEvQKmRS5AW3XfmHoLWCWEYlbSpyzMXJ1GqXIrJi65TrM6vRpMzSNaFEcojVSKaXp3bkWXxveUhKSXcp+Sdwtod9dkWBmti5PdlUdO77MLwRTJ7EY1btiDEtuWBYZWe3s43s+Cxcd2Bsi1PV43tRQC+3hvuL4JSqBor1lp3H1SWu0HxdVwj5RsyfUrItDVoWmYxp+2VOzLyvLzORQ1XnKMZI9lbhLEX7aw/fZFx8A/nT0pm9rikAUlQqfMOji1KH7Z5+YId8kmHdliRkYqMeIuuzeX8FGf1kF1nOH7wtgMpyW/VSbtZhdycuURpe8da7leM002xsNNzL1qUDNIsnYSOAA5cBkVDI=

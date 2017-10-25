@@ -19,7 +19,7 @@ Evaluation criteria:
   - https://circleci.com/docs/2.0/deployment_integrations/
 * node tests, optionally a UI headless browser test
 * Docker support
-* 
+* Communication integrations: https://docs.travis-ci.com/user/notifications/
 * Secrets management:
   Travis CI generates a public/private key pair and asks the user to encrypt using the public key using Travis CLI 
   and put the encrypted value in the config, which is used by travis to decrypt in the Travis backend.
