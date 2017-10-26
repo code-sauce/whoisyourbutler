@@ -6,7 +6,6 @@ Currently evaluating:
 
 * CircleCI
 * Travis-CI
-* Codeship
 
 Since we already use Jenkins, evaluating it will not be very useful.
 
