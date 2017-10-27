@@ -7,6 +7,7 @@ Currently evaluating:
 * CircleCI
 * Travis-CI
 
+
 Since we already use Jenkins, evaluating it will not be very useful.
 
 Evaluation criteria:
