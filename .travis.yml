@@ -13,18 +13,8 @@ matrix:
     - jasmine examples
     script: jasmine
   - language: python
-    python: '2.6'
-    install:
-    - pip install pytest
-    script: python -m pytest
-  - language: python
     python: '2.7'
     env: FOO=bar
-    install:
-    - pip install pytest
-    script: python -m pytest
-  - language: python
-    python: '3.4'
     install:
     - pip install pytest
     script: python -m pytest
@@ -33,7 +23,8 @@ matrix:
     install:
     - pip install pytest
     script: python -m pytest
-  - language: python
+  - sudo: required
+    language: python
     services: docker
     before_install:
     - docker build -t codesauce/whoisyourbutler .
