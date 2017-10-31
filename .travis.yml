@@ -23,20 +23,6 @@ matrix:
     install:
     - pip install pytest
     script: python -m pytest
-  # - sudo: required
-  #   language: python
-  #   install: pip install pytest
-  #   script: python -m pytest
-  #   after_success:
-  #   - pip install awscli
-  #   - export PATH=$PATH:$HOME/.local/bin
-  #   - aws ecr get-login --region us-east-1
-  #   - eval $(aws ecr get-login --region us-east-1 --no-include-email)
-  #   - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME"
-  #     -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler; docker --version;
-  #     docker build -t whoisyourbutler . ; docker tag whoisyourbutler:latest 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
-  #     ; docker push 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
-  #     ; fi
 notifications:
   slack:
     secure: mX6FMD2GjMuWoxxQSx5Ptu8R77z1WomKK6GMNLlsjLWxasF2Uc4YPT2GsgIAk9bNoWUihlKv6u1A2ho3HADzXR4hghBKJs3lrfhmPK8V10r5655VoeTLzlzDEn337fYaGEZiUc/bikDc0fK3qR/C1vcMZVog7y8fS2h80GXsBqTq+vVxVVYvyTvSiDB87wbzURAZc7tApobysPiEMZRgHxtaK7djliDHfyE6Ho9pMGsmGoaAYbwGsFQvnZh1ZEeacaI9Kx7wohrCTXHf4uK79qQxEd6TD7rR00Scvks1D4KcRxJUiQz5uuyhXeReHGk/4vpU3KUNpOgWEvQKmRS5AW3XfmHoLWCWEYlbSpyzMXJ1GqXIrJi65TrM6vRpMzSNaFEcojVSKaXp3bkWXxveUhKSXcp+Sdwtod9dkWBmti5PdlUdO77MLwRTJ7EY1btiDEtuWBYZWe3s43s+Cxcd2Bsi1PV43tRQC+3hvuL4JSqBor1lp3H1SWu0HxdVwj5RsyfUrItDVoWmYxp+2VOzLyvLzORQ1XnKMZI9lbhLEX7aw/fZFx8A/nT0pm9rikAUlQqfMOji1KH7Z5+YId8kmHdliRkYqMeIuuzeX8FGf1kF1nOH7wtgMpyW/VSbtZhdycuURpe8da7leM002xsNNzL1qUDNIsnYSOAA5cBkVDI=
@@ -49,7 +35,7 @@ deploy:
   provider: s3
   access_key_id: AKIAIZIDUA22TTHDJR4A
   secret_access_key:
-    secure: LnOyfri2S6U1sQhRXf0xs9eNbnmGswKs1YTcquWIryVrwGaAi3Qi1nDHrDXW3oSyu04Q3T+sAf1XPujYTtdmaSXudjy5+WwqiNLz9iyvY6gkqoEsOMZHIk14njoaxAjvDBHN52A+1ryOweLAPQBW/aY9TmdRf8Ii7KcjpfOEX4M28dK3imbluqPvQH5bzRJI+7r5kn3cufSzHroWRDiugzxivcd+rubZW2ho6KwNux/6SqRbntU6qOif7VMWew9mqMiPKmSaIKFqlgrTvLGlp3l0zkVr+wKxIve9Flk+DB67WMJXK/5EMZ8dAWtU88vBGvsY+3+UH40valkx2SMkGXJqJc0bLOdujwy/2qMcnLWUYS6zodIneVXUFZqml4BFLCiHh6iVzMAd6c4HGOd+OG3XR27i+N7Amlxl+wxqdSbehiF/Ocg/s7f5S8HYcKbrdcrbD/9LfS9APRWDLqs1p+S1yPbowdy+Va5gaAsYoVXAwlKVL+sfXMRcgJMMfsP4vxtwsvWsvYHOGAYZT2o8j8sCPUEnLQP1zfS7p7I1syesWE8gZEMSq4F8XYVwLOWDyzu4SY491AHTT7unkSy9TsBQ//bi8P6h21PbAJVtF7xNA54kGMyA1j2xoWwLv6rdIxfnx9Wd/kdkWeGgEYmF9IPhIBnfyVRkfZmXSIHTeNo=
+    secure: Gh+pDFQe4wHFI6pS3R7pTas5CHLXo6PpxRlOREmSH12Dh5GvsZt7FODv3EQ01MjcUA5T1vCDMUyHDUxxCMxav3vfJZuHP50wBn1xjCLuBJOtyuuPukHXr2S2GFcgQiShOxVFEg+H1bO355NpzhxAajtfOCzDEIcHeSC2bHFa6Icordx2swmC5OgGu53AZSt7L1gBpbjSSYaC58z4LnNDlKyoBU5woeN9C5mysohig8+bBVdqIRwLUTvRK7Sx6JHKUgjFPnmneRpw84VSd8K6E1BKvNpkBzc7ZsH1El/qeOAgaZYB5Vf6W7kjxbVzoUqTJnLRMoi7dvMII8dDL4ON7wVcYRrc6GeG2fJSzEjag79yKHLlM2OTgz3zBisC/NZW/f8TgaXhs8VrLx42Dkwm3zcwE3YA5LrVxdrbDMdUjQsHTIccDZh4ZUwjwhlw84esEU6icZIMQM24j3yFBjtoB0r8cf6R8JBpjNMUdkCqpNJcvf7wQTOedAXeShJnNm7nIQferQCrCcrtqf177CTI+1ZGsDUDdyf2cSIZcI8Uz2QhfmXcl6y77319jw8o+gqeqsUGvp0j3FMR8VZ+/RfiqKQLTbD0ONX2pk1YXlQcjGLgO9qxDXOUBqwDV+YY+MeYGOS3y76yH6Ix539Kl1q46SXn82N+84qR7zEnFHW6UTA=
   bucket: whoisyourbutler.deployment
   local-dir: build
   upload-dir: build
