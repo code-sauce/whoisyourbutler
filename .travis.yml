@@ -23,23 +23,20 @@ matrix:
     install:
     - pip install pytest
     script: python -m pytest
-  - sudo: required
-    services: docker
-    language: python
-    before_install:
-    - docker build -t codesauce/whoisyourbutler .
-    install: pip install pytest
-    script: python -m pytest
-    after_success:
-    - pip install awscli
-    - export PATH=$PATH:$HOME/.local/bin
-    - aws ecr get-login --region us-east-1
-    - eval $(aws ecr get-login --region us-east-1 --no-include-email)
-    - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME"
-      -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler; docker --version;
-      docker build -t whoisyourbutler . ; docker tag whoisyourbutler:latest 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
-      ; docker push 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
-      ; fi
+  # - sudo: required
+  #   language: python
+  #   install: pip install pytest
+  #   script: python -m pytest
+  #   after_success:
+  #   - pip install awscli
+  #   - export PATH=$PATH:$HOME/.local/bin
+  #   - aws ecr get-login --region us-east-1
+  #   - eval $(aws ecr get-login --region us-east-1 --no-include-email)
+  #   - if [ "$TRAVIS_BRANCH" == "master" ]; then docker login -u="$DOCKER_USERNAME"
+  #     -p="$DOCKER_PASSWORD"; docker push codesauce/whoisyourbutler; docker --version;
+  #     docker build -t whoisyourbutler . ; docker tag whoisyourbutler:latest 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
+  #     ; docker push 050429994862.dkr.ecr.us-east-1.amazonaws.com/whoisyourbutler:latest
+  #     ; fi
 notifications:
   slack:
     secure: mX6FMD2GjMuWoxxQSx5Ptu8R77z1WomKK6GMNLlsjLWxasF2Uc4YPT2GsgIAk9bNoWUihlKv6u1A2ho3HADzXR4hghBKJs3lrfhmPK8V10r5655VoeTLzlzDEn337fYaGEZiUc/bikDc0fK3qR/C1vcMZVog7y8fS2h80GXsBqTq+vVxVVYvyTvSiDB87wbzURAZc7tApobysPiEMZRgHxtaK7djliDHfyE6Ho9pMGsmGoaAYbwGsFQvnZh1ZEeacaI9Kx7wohrCTXHf4uK79qQxEd6TD7rR00Scvks1D4KcRxJUiQz5uuyhXeReHGk/4vpU3KUNpOgWEvQKmRS5AW3XfmHoLWCWEYlbSpyzMXJ1GqXIrJi65TrM6vRpMzSNaFEcojVSKaXp3bkWXxveUhKSXcp+Sdwtod9dkWBmti5PdlUdO77MLwRTJ7EY1btiDEtuWBYZWe3s43s+Cxcd2Bsi1PV43tRQC+3hvuL4JSqBor1lp3H1SWu0HxdVwj5RsyfUrItDVoWmYxp+2VOzLyvLzORQ1XnKMZI9lbhLEX7aw/fZFx8A/nT0pm9rikAUlQqfMOji1KH7Z5+YId8kmHdliRkYqMeIuuzeX8FGf1kF1nOH7wtgMpyW/VSbtZhdycuURpe8da7leM002xsNNzL1qUDNIsnYSOAA5cBkVDI=
@@ -48,3 +45,14 @@ env:
   - secure: uz/04XhrHATelWx4z2gSdAUAuInGJPwgOu+sZYtntX8LqGzj85hRKCfm+94QZkaLZr/uhj77teM3j6YWVQreJJH4eZEMfmBD0+4oYsuB3dm1LNsq3IyeeLafvTthkxjZRz/cHOABub9qcAUXGax5L9n7Zb6krmGoXo4QKmBd8hyK22t1uE27oadbGmbmh+lZa+EJG23/mi5THUnAdR5OfMOf6cMjsnmHCHhiSAhmfTMmNzoEGo573Wve+d2d+6P7daDV7bV3osb6L0ieXqat7UaGlIGK4AP2VR46+i5+BkT1zPEaYObviRhsbVZUM5zDqE2BsqgWmyvFrXHsR3ikNEcTCsaHu9pzfrZApOMw0PkNNpE/lkYW03wbRk4nfw/T7svczWM3o23wpidTCdu5CCtINtFBX1ezNLLWyFKaI5Yv5bJ5ZbQys1H+tg1mQ1TDMtF2CW7gRkIL7lt+pNZ9gBAvGdjC1ZRUnGBzvGeqFhbMlGvzGA5M8heIB1TNQ4RfKOxBAGIj5IIcVGYjRYWYIFOQOW8PWgjbhHo3LjP5CVdklediB426YoeJBgDwe/dk6TrZ2nAfwTVj4v8NxfnOQST3cOVs/jC/1GRDPW0Z8lkKdTY/+3CbZ+vQ0KNPiheKiE+vIoed/jR/1/SLdbXjPTsfP8/bB7QneZenZNFmMyA=
   - secure: PvyRIqtUKwct7bq0UtSrmopCnRcGyaAly31uaI+o6DnU3rSWVMut0loM8g57gz/SLRUsoYJRE+oN98tvNH2xQazdid9l4GPwkW9n//XnviZohKUlMeIqKmFf6RR86Rqd4BLUEEofRPkpPH7KasRMXvapIzQ+jnAG7hk7YdjAwyt3kLVvgLYM7adKPtoz4Ay4Qrnwb+DLE+1yGSg4ndjNvhHqcAdb5GYafxYMbryV+J7uDQPmS8Bfl1jYLo9M/Mjn38wfbaqymLZ8jDBNoz797U77fbaQU9gyA/Iu/f3hG821t21qgwTEgTlDuRcZYfm1cAsUt5d1UDEBQJX/ESPtWTepvZfCCPG+WJITkycQlclfjVTGphaobMY4iD6KwdysHWMTnG3sNEXoC9XDVyfXhp3Q+YaQAUAvVO+6ToEHpsH6bq6pyaZtsEOoC9Wi5Asd9wkwaPJ4MP4i6orAnClLqI/CbONxdvvhOOIE9rRUzjKS6Anrz8JTEQ0jWn/dHy9biqVCq2Wwz2DRqdkia3F7owb8TlWzZ5MVQoLSggIT4zEzzsyCZiIZyiSWL2V0DDtyJ5EhlgqGr4iINZ+iwp6tFYh6vQEkQzvw0zYdUxgbakd0J8cG74IibfEFs28Rwe6N42Vl+poAnM+FC0h0umajJilMxMoj9ddOXGeVHwkmE24=
   - secure: ay2B0EZtgZ01tUqHbsfhfDXUCMFv5HZGhdo0YMrgDWB6gBSwVkqGMDyz8d69D+S3vBbUd4zmcKZTCaYirU6CnujyiPjXao5HYBaXBLM8qcZ3VzAEHZgmogutRPYV2Ro7bQlFJHqbYnrvyEQMp7Rn/zeIe1RhvrO8/cEqEjEnjeq9dECdBFbNHoN6w7Q+0T1MsJBOgXC+vsl/8D5nyW+ezK0u/sbcDYjse5I41mQZbKGxp2lak62jf4XeGMeHKVHSPrnBKT9CsLgv5dsxVd6ygVxJ3PaNEJLF8W4eA3eezujVQstHfZVNqsWrJ8cmmhoHN6fRS0zaWaQdXCsQTjGhpf2mDpJRzaEV8RSeDNK3v1dcSC5YlyBH5gXn+aWx33QBHIUdAs+b5CkOV8RgxMA961TgJbZvrlqGwMJb98NJsaDHDnN5R1rlbHkKe0i7cephPGxyZL528q72GTaW+VlHze1G5XOMiGyxnTaM/xW/sIq9SLH49p/6HT8x4xBt2MJZOQFiCr/AfHkl2mxM3gr6dcX5EwHlsHJ7yfI5u7vWoOYrnRroZ2wUuca7/212zgEOqMJs1GHuOhB4fi1IeaMfre/CHW/Z482m1PliJSVIDGFjKoU0427oF5WV7E8USTs1eccGVEKb3pozK9BmNET3GlxZmeFiUuwcsJ0FOcSmI5s=
+deploy:
+  provider: s3
+  access_key_id: AKIAIZIDUA22TTHDJR4A
+  secret_access_key:
+    secure: LnOyfri2S6U1sQhRXf0xs9eNbnmGswKs1YTcquWIryVrwGaAi3Qi1nDHrDXW3oSyu04Q3T+sAf1XPujYTtdmaSXudjy5+WwqiNLz9iyvY6gkqoEsOMZHIk14njoaxAjvDBHN52A+1ryOweLAPQBW/aY9TmdRf8Ii7KcjpfOEX4M28dK3imbluqPvQH5bzRJI+7r5kn3cufSzHroWRDiugzxivcd+rubZW2ho6KwNux/6SqRbntU6qOif7VMWew9mqMiPKmSaIKFqlgrTvLGlp3l0zkVr+wKxIve9Flk+DB67WMJXK/5EMZ8dAWtU88vBGvsY+3+UH40valkx2SMkGXJqJc0bLOdujwy/2qMcnLWUYS6zodIneVXUFZqml4BFLCiHh6iVzMAd6c4HGOd+OG3XR27i+N7Amlxl+wxqdSbehiF/Ocg/s7f5S8HYcKbrdcrbD/9LfS9APRWDLqs1p+S1yPbowdy+Va5gaAsYoVXAwlKVL+sfXMRcgJMMfsP4vxtwsvWsvYHOGAYZT2o8j8sCPUEnLQP1zfS7p7I1syesWE8gZEMSq4F8XYVwLOWDyzu4SY491AHTT7unkSy9TsBQ//bi8P6h21PbAJVtF7xNA54kGMyA1j2xoWwLv6rdIxfnx9Wd/kdkWeGgEYmF9IPhIBnfyVRkfZmXSIHTeNo=
+  bucket: whoisyourbutler.deployment
+  local-dir: build
+  upload-dir: build
+  acl: public_read_write
+  on:
+    repo: code-sauce/whoisyourbutler
