@@ -24,6 +24,7 @@ matrix:
     - pip install pytest
     script: python -m pytest
   - sudo: required
+    services: docker
     language: python
     before_install:
     - docker build -t codesauce/whoisyourbutler .
