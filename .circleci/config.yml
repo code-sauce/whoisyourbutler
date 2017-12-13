@@ -12,8 +12,6 @@ general:
      - master # list of branches to build
      - topic
 
-
-     
 jobs:
   build:
     working_directory: ~/
