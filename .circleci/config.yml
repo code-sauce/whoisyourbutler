@@ -6,7 +6,7 @@
 
 version: 2
 jobs:
-  test:
+  build:
     working_directory: ~/
     docker:
       - image: circleci/python:2.7-jessie-browsers
@@ -29,4 +29,4 @@ workflows:
   version: 2
   unittest:
     jobs:
-      - test
+      - build
